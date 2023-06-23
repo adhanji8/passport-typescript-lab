@@ -1,4 +1,5 @@
-import { Strategy as GitHubStrategy } from 'passport-github2';
+import { Strategy as GitHubStrategy, Profile } from 'passport-github2';
+import { Request } from 'express';
 import { PassportStrategy } from '../../interfaces/index';
 
 const githubStrategy: GitHubStrategy = new GitHubStrategy(
@@ -8,9 +9,9 @@ const githubStrategy: GitHubStrategy = new GitHubStrategy(
         callbackURL: "",
         passReqToCallback: true,
     },
-    
-    /* FIX ME 😭 */
-    async (req: any, accessToken: any, refreshToken: any, profile: any, done: any) => {},
+    async (req: Request, accessToken: string, refreshToken: string, profile: Profile, done: (error: any, user?: any) => void) => {
+        // Your implementation of the callback function
+    },
 );
 
 const passportGitHubStrategy: PassportStrategy = {
